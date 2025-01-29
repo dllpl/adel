@@ -37,6 +37,22 @@
                 box-sizing: border-box;
                 scroll-behavior: smooth;
             }
+            .main {
+                position: relative;
+                min-height: 100vh;
+                overflow: hidden;
+            }
+            .main::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('/assets/img/main.jpg') center/cover; /* Путь к изображению */
+                filter: blur(8px); /* Сила размытия */
+                z-index: -1; /* Отправляет фон под контент */
+            }
         }
     </style>
     <style>
@@ -48,7 +64,6 @@
         .swiper-slide {
             text-align: center;
             font-size: 18px;
-            background: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -61,6 +76,16 @@
             object-fit: cover;
         }
 
+        .glass {
+            /* From https://css.glass */
+            background: rgba(0, 0, 0, 0.48);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.8px);
+            -webkit-backdrop-filter: blur(8.8px);
+            border: 1px solid rgba(0, 0, 0, 0.43);
+        }
+
     </style>
 
     <script type='application/ld+json'>
@@ -69,32 +94,38 @@
             "@type": "person",
             "name": "ADEL’",
             "jobTitle": "ADEL’ DJ",
+            "image": "https://adeldj.ru/assets/img/main.jpg",
             "url": "https://adeldj.ru/presskit",
             "email": "adel22081988@gmail.com"
         }
     </script>
 
 </head>
-<body>
-<main class="p-2 bg-black h-full flex flex-col space-y-4">
+<body class="relative bg-black min-h-screen">
+<div class="absolute inset-0 bg-[url('/assets/img/main.jpg')] bg-cover bg-center blur-sm"></div>
+
+<main class="relative z-10 p-2 h-full flex flex-col space-y-4">
     <section class="header">
-        <div class="container mx-auto max-w-2xl flex flex-col items-center space-y-4 bg-white border border-gray-300 rounded-xl p-4">
-            <img src="/assets/img/main.jpg" class="w-50 h-50 object-cover rounded-full border" alt="main image">
+        <div class="glass container mx-auto max-w-2xl flex flex-col items-center space-y-4 bg-white border border-gray-300 rounded-xl p-4">
+            <img src="/assets/img/bg.webp" class="w-50 h-50 object-cover rounded-full border" alt="main image">
             <div class="w-full">
-                <h1 class="text-4xl border-b w-full text-center">ADEL’</h1>
-                <h2 class="text-md text-gray-500 w-full text-center">bio</h2>
+                <h1 class="text-4xl border-b w-full text-center text-white">ADEL’</h1>
+                <h2 class="text-md text-white w-full text-center">bio</h2>
             </div>
-            <p class="text-xl text-center">Advanced DJ, promoter and party planner. Every time Adel’s set is a real
-                musical exciting attraction, as she knows how to combine different styles of music - afro, indie,
-                techno, melodic, this is what makes her different. ADEL’ plays in famous clubs in Russia and abroad.</p>
+            <p class="text-lg text-center text-white">
+                Advanced DJ, promoter and party planner. Every time Adel’s set is a real musical exciting attraction,
+                as she knows how to combine different styles of music - afro, indie, techno, melodic, this is what makes her different.
+                ADEL’ plays in famous clubs in Russia and abroad.
+            </p>
         </div>
     </section>
+
     <section class="links">
-        <div class="container mx-auto max-w-2xl flex flex-col items-center justify-center space-y-4 bg-white border border-gray-300 rounded-xl p-4">
-            <h2 class="text-md text-gray-500 text-center">links</h2>
+        <div class="glass container mx-auto max-w-2xl flex flex-col items-center justify-center space-y-4 bg-white border border-gray-300 rounded-xl p-4">
+            <h2 class="text-md text-gray-500 text-center text-white">LINKS</h2>
             <div class="flex flex-col w-full">
                 <a href="https://soundcloud.com/musicadel" target="_blank" rel="noopener noreferrer">
-                    <button class="border-orange-600 bg-black border-3 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded w-full rounded-lg">
+                    <button class="ring-1 ring-orange-600 bg-black text-white py-4 px-4 rounded w-full rounded-lg">
                         <i class="fa-brands fa-soundcloud text-orange-600"></i>
                         Soundcloud
                     </button>
@@ -102,15 +133,15 @@
             </div>
             <div class="flex flex-col w-full">
                 <a href="https://www.instagram.com/zavarushka.dj?igsh=MzJhNjNhcDRsaHpt" target="_blank">
-                    <button class="border-purple-600 border-3 bg-black hover:bg-blue-700 text-white font-bold py-4 px-4 rounded w-full rounded-lg">
+                    <button class="ring-1 ring-purple-600 bg-black text-white py-4 px-4 rounded w-full rounded-lg">
                         <i class="fa-brands fa-instagram text-purple-600"></i>
                         Instagram
                     </button>
                 </a>
             </div>
             <div class="flex flex-col w-full">
-                <a href="https://www.instagram.com/zavarushka.dj?igsh=MzJhNjNhcDRsaHpt" target="_blank">
-                    <button class="bg-black border-3 border-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded w-full rounded-lg">
+                <a href="https://www.facebook.com/adele.ch.16" target="_blank">
+                    <button class="bg-black ring-1 ring-blue-600 text-white py-4 px-4 rounded w-full rounded-lg">
                         <i class="fa-brands fa-facebook text-blue-600"></i>
                         Facebook
                     </button>
@@ -118,7 +149,7 @@
             </div>
             <div class="flex flex-col w-full">
                 <a href="https://t.me/linaa0888" target="_blank">
-                    <button class="bg-black border-3 border-blue-400 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded w-full rounded-lg">
+                    <button class="bg-black ring-1 ring-blue-400 text-white py-4 px-4 rounded w-full rounded-lg">
                         <i class="fa-brands fa-telegram text-blue-400"></i>
                         Telegram
                     </button>
@@ -126,7 +157,7 @@
             </div>
             <div class="flex flex-col w-full">
                 <a href="mailto:adel22081988@gmail.com" target="_blank">
-                    <button class="bg-black hover:bg-blue-700 text-white font-bold py-4 px-4 rounded w-full rounded-lg">
+                    <button class="bg-black text-white py-4 px-4 rounded w-full rounded-lg ring-1 ring-white">
                         <i class="fa-solid fa-envelope"></i>
                         Email
                     </button>
@@ -134,14 +165,23 @@
             </div>
         </div>
     </section>
+
     <section class="about">
-        <div class="container mx-auto max-w-2xl flex flex-col items-center space-y-4 bg-white border border-gray-300 rounded-xl p-4">
-            <h2 class="text-md text-gray-500 w-full text-center">photo & video</h2>
+        <div class="glass container mx-auto max-w-2xl flex flex-col items-center space-y-4 bg-white border border-gray-300 rounded-xl p-4">
+            <h2 class="text-md text-gray-500 w-full text-center text-white">PRESSKIT</h2>
             <div class="flex flex-col w-full">
                 <a href="https://drive.google.com/drive/folders/14kewBPl2r_fDZA6sKibKSzexyrAEYQ-T?usp=sharing"
                    target="_blank">
-                    <button class="bg-black hover:bg-blue-700 text-white font-bold py-4 px-4 rounded w-full rounded-lg">
-                        My Photo & Video
+                    <button class="bg-black text-white py-4 px-4 rounded w-full rounded-lg ring-1 ring-white">
+                        Photo & Video
+                    </button>
+                </a>
+            </div>
+            <div class="flex flex-col w-full">
+                <a href="https://drive.google.com/drive/u/0/folders/1yjrdoAF3t4sXsrxkRCZup9j2ak9pGRYO"
+                   target="_blank">
+                    <button class="bg-black text-white py-4 px-4 rounded w-full rounded-lg ring-1 ring-white">
+                        Logo
                     </button>
                 </a>
             </div>
@@ -169,6 +209,7 @@
 <script>
     var swiper = new Swiper(".mySwiper", {
         autoplay: true,
+        loop: true,
         scrollbar: {
             el: ".swiper-scrollbar",
             hide: true,
@@ -176,4 +217,5 @@
     });
 </script>
 </body>
+
 </html>
