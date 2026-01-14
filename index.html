@@ -112,9 +112,16 @@
                 <h1 class="text-4xl border-b w-full text-center text-white">ADEL’</h1>
                 <h2 class="text-md text-white w-full text-center">bio</h2>
             </div>
-            <p class="text-lg text-center text-white">
-                DJ, promoter and party planner. Every time Adel’s set is a real musical exciting attraction, as she knows how to combine different styles of music - afro, indie, techno, melodic, this is what makes her different. ADEL’ plays in famous clubs in Russia and abroad. Performed in famous clubs - Raeeth, Azule (Goa).
-            </p>
+         <div class="w-full flex justify-center gap-2 mb-2">
+            <button id="btn-en" class="px-3 py-1 text-sm rounded bg-white text-black">ENG</button>
+            <button id="btn-ru" class="px-3 py-1 text-sm rounded bg-black text-white ring-1 ring-white">RUS</button>
+        </div>
+        <p id="bio-text" class="text-lg text-center text-white">
+            DJ, promoter and party planner. Every time Adel’s set is a real musical exciting attraction,
+            as she knows how to combine different styles of music - afro, indie, techno, melodic,
+            this is what makes her different. ADEL’ plays in famous clubs in Russia and abroad.
+            Performed in famous clubs - Raeeth, Azule (Goa).
+        </p>
         </div>
     </section>
 
@@ -218,6 +225,37 @@
             el: ".swiper-scrollbar",
             hide: true,
         },
+    });
+
+      const bioText = document.getElementById('bio-text');
+    const btnEn = document.getElementById('btn-en');
+    const btnRu = document.getElementById('btn-ru');
+
+    const bioEN = `DJ, promoter and party planner. Every time Adel’s set is a real musical exciting attraction,
+    as she knows how to combine different styles of music - afro, indie, techno, melodic,
+    this is what makes her different. ADEL’ plays in famous clubs in Russia and abroad.
+    Performed in famous clubs - Raeeth, Azule (Goa).`;
+
+    const bioRU = `Диджей, промоутер и организатор вечеринок. Каждый раз сет Адель представляет собой
+    настоящий музыкальный захватывающий аттракцион, ведь она умеет сочетать разные стили музыки –
+    афро, инди, техно, мелодику, именно это отличает ее от других.
+    АДЕЛЬ играет в известных клубах России и зарубежья.
+    Выступала в известных клубах - Raeeth, Azule (Гоа).`;
+
+    btnEn.addEventListener('click', () => {
+        bioText.textContent = bioEN;
+        btnEn.classList.add('bg-white','text-black');
+        btnEn.classList.remove('bg-black','text-white');
+        btnRu.classList.add('bg-black','text-white');
+        btnRu.classList.remove('bg-white','text-black');
+    });
+
+    btnRu.addEventListener('click', () => {
+        bioText.textContent = bioRU;
+        btnRu.classList.add('bg-white','text-black');
+        btnRu.classList.remove('bg-black','text-white');
+        btnEn.classList.add('bg-black','text-white');
+        btnEn.classList.remove('bg-white','text-black');
     });
 </script>
 </body>
